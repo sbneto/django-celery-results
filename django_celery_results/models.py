@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.models import User
 
 from celery import states
 from celery.five import python_2_unicode_compatible
@@ -32,6 +33,10 @@ class TaskResult(models.Model):
     traceback = models.TextField(_('traceback'), blank=True, null=True)
     hidden = models.BooleanField(editable=False, default=False, db_index=True)
     meta = models.TextField(null=True, default=None, editable=False)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     objects = managers.TaskResultManager()
 
