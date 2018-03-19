@@ -42,13 +42,14 @@ INSTALLED_APPS = [
     'django_celery_results',
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django_celery_results.middleware.GlobalRequestMiddleware',
 ]
 
 ROOT_URLCONF = 't.proj.urls'
