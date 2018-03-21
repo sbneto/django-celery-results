@@ -2,32 +2,31 @@ language: python
 sudo: false
 cache: false
 python:
-    - '3.5'
+- '3.5'
 os:
-    - linux
+- linux
 env:
-  global:
-    PYTHONUNBUFFERED=yes
+  global: PYTHONUNBUFFERED=yes
   matrix:
-    - TOXENV=2.7-django1.10
-    - TOXENV=2.7-django1.9
-    - TOXENV=2.7-django1.8
-    - TOXENV=pypy-django1.10
-    - TOXENV=pypy-django1.9
-    - TOXENV=pypy-django1.8
-    - TOXENV=3.4-django1.10
-    - TOXENV=3.4-django1.9
-    - TOXENV=3.4-django1.8
-    - TOXENV=3.5-django1.10
-    - TOXENV=3.5-django1.9
-    - TOXENV=3.5-django1.8
-    - TOXENV=flake8
-    - TOXENV=flakeplus
-    - TOXENV=apicheck
-    - TOXENV=pydocstyle
-    - TOXENV=cov
+  - TOXENV=3.5-django2.0
+  - TOXENV=3.5-django1.11
+  - TOXENV=2.7-django1.11
+  - TOXENV=pypy-django1.11
+  - TOXENV=flake8
+  - TOXENV=flakeplus
+  - TOXENV=apicheck
+  - TOXENV=pydocstyle
+  - TOXENV=cov
 install: travis_retry pip install -U tox
 script: tox -v -- -v
 after_success:
-  - .tox/$TRAVIS_PYTHON_VERSION/bin/coverage xml
-  - .tox/$TRAVIS_PYTHON_VERSION/bin/codecov -e TOXENV
+- ".tox/$TRAVIS_PYTHON_VERSION/bin/coverage xml"
+- ".tox/$TRAVIS_PYTHON_VERSION/bin/codecov -e TOXENV"
+deploy:
+  provider: pypi
+  on:
+    tags: true
+  user:
+    secure: SCkzt8uxxFjcBnPg8jAq9m10tjTxfWMmxPqdKwu7Zv6fFhJoUS+VTi7MDGMAWoLU/vhr8b5xeDFDaXghNzR2utWPEmzqYjKl3LJA7OlSp9oif/ntpWl5R4Z4UbBbOLMxhC5vjAfaeUSC2M4w0FFGiX2OeJW+ygS0se4nsfXTqFTxu+m6lQbMDV+rf5OhqdOc0zJAVtzT3TMf5kSjJztHt+7SjoU8uJybM9hWL6dxhC20zMafaNH4Aulf4vZUbqhd67Hs/p1EWI2xBVVLD+VhtmoC414Jr8VbaLVu31264iGIj/vAVEbK4c77NgWv5O2kVc6rpkJIuPT4h6CNX5Tlh09JRITOePKDtY3FP1DaCA7vb1BWDMOz4shojQzGIH3noZGtaaXGksI42iJ7nE+EOPgSkWC4FscjN8QnTuSE6d/OAfKsgsnTbLW99n/bjBcB+Pg4YjZwdANywljTaZ1fkU2Q07iqFiCKnDOvxo7l1+JZ3zY2X/KHp1k2R7cNp3fb0LuQeWbsD1e2LdzH9d8nsE+0Zv3MVQu+IwPpfHzzP3X5BlZ2uTO8Murms7F/6nAMg8R6UoLipsqFuRNR8MJK4OHjaxYCgX5fHyUZ/QGRY4RSrxiScilkCJ5CllU8lJ2kRsNDeTRl+A6QILD6ZGmTe/lhyGuEhoh3BGkEsO+Dc+w=
+  password:
+    secure: F9+8OJL1ym2xQLjrrPFBcm3DvJHpAj4QpmGNg1HzjE+HnS/JwaWe/mqGZji3A6j4HRJL7F/BPgy3t2fH64YxNYFRbeVHl0r8rlfi/xbxrCVBQFylBDvfQv1jUYxX1iqbxP+IqI1kBfJJW/JcTGsAEcralt8k5SqBvjlV0fFomCAnEzsN+JNW4q6IZsv6ewZISHFchGYLKkfzWI/8mAmvDX++bHGnTC6J2ldVVFeOS5C2bxv673j7cnxC016En8+iWsDd8h4+QB4X1mx5nDQthi3NZtK3kfzfiMuZgiHbNLzdn3OrbhJ8aemjiec9FG8gHismkUjvz7VcrWANCW7Kms/eErnXxy9t+n7COJOl94E6Btp7ozMBWLwjVtTCOnfwwQaMZqxZTcwYsnaR7D00FWBuw8769f/iJ6NKyjk0mqD6MhlEnPV+ASlL7jgK+XE7N2ztO5S+NsMhkjtDMq6Yq7iB7VaLxdxhcZg/wiTM3F4G7KMpF4iU+/p1famfBvusTVV0lAql4Zfe1mEKAgRXcpgcC5HKmX8evGlNdn9BP8eZIVus2js92QPUYzpsTDu51D+zv1lwszfY0gZmNkoY+1bud4IwtaVJlTyA/qYBZHE5rjEyqaMM1mFmEgm3omNOibOrbA6MU+NDmEfz+E4gOuc276RN4mj6Hjbrqn+GHA4=
