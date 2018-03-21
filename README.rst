@@ -38,8 +38,8 @@ With pip
 You can install the latest snapshot of django-celery-tasks using the following
 pip command::
 
-    $ pip install https://github.com/celery/django-celery-tasks/zipball/master#egg=django-celery-tasks
+    $ pip install https://github.com/sbneto/django-celery-tasks/zipball/master#egg=django-celery-tasks
 
 .. |build-status| image:: https://secure.travis-ci.org/sbneto/django-celery-tasks.svg?branch=master
     :alt: Build status
-    :target: https://travis-ci.org/celery/django-celery-tasks
+    :target: https://travis-ci.org/sbneto/django-celery-tasks
