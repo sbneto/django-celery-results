@@ -11,10 +11,10 @@ env:
   - TOXENV=3.5-django2.0
   - TOXENV=3.5-django1.11
   - TOXENV=2.7-django1.11
-  - TOXENV=flake8
-  - TOXENV=flakeplus
-  - TOXENV=apicheck
-  - TOXENV=pydocstyle
+#  - TOXENV=flake8
+#  - TOXENV=flakeplus
+#  - TOXENV=apicheck
+#  - TOXENV=pydocstyle
   - TOXENV=cov
 install: travis_retry pip install -U tox
 script: tox -v -- -v
