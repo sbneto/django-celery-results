@@ -11,14 +11,14 @@ class GlobalRequestMiddleware:
     @classmethod
     def get_current_request(cls):
         try:
-            return cls._threadmap[threading.get_ident()]
+            return cls._threadmap[threading.current_thread().ident]
         except KeyError:
             return None
 
     def __call__(self, request):
         # Code to be executed for each request before
         # the view (and later middleware) are called.
-        self._threadmap[threading.get_ident()] = request
+        self._threadmap[threading.current_thread().ident] = request
         try:
 
             response = self.get_response(request)
@@ -29,6 +29,6 @@ class GlobalRequestMiddleware:
             return response
         finally:
             try:
-                del self._threadmap[threading.get_ident()]
+                del self._threadmap[threading.current_thread().ident]
             except KeyError:
                 pass
