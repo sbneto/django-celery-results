@@ -11,7 +11,7 @@ from celery import result
 from celery import states
 from celery import uuid
 
-from django_celery_results.backends.cache import CacheBackend
+from django_celery_tasks.backends.cache import CacheBackend
 
 
 class SomeClass(object):

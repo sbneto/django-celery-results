@@ -6,8 +6,8 @@ import os
 from sphinx_celery import conf
 
 globals().update(conf.build_config(
-    'django_celery_results', __file__,
-    project='django_celery_results',
+    'django_celery_tasks', __file__,
+    project='django_celery_tasks',
     # version_dev='2.0',
     # version_stable='1.4',
     canonical_url='http://django-celery-results.readthedocs.io',
@@ -22,9 +22,9 @@ globals().update(conf.build_config(
     html_favicon='images/favicon.ico',
     html_prepend_sidebars=[],
     apicheck_ignore_modules=[
-        'django_celery_results',
-        'django_celery_results.apps',
-        'django_celery_results.admin',
-        r'django_celery_results.migrations.*',
+        'django_celery_tasks',
+        'django_celery_tasks.apps',
+        'django_celery_tasks.admin',
+        r'django_celery_tasks.migrations.*',
     ],
 ))

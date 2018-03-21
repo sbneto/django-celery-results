@@ -6,7 +6,7 @@ import pytest
 from celery import uuid
 from celery import states
 
-from django_celery_results.backends.database import DatabaseBackend
+from django_celery_tasks.backends.database import DatabaseBackend
 
 
 class SomeClass(object):
@@ -23,7 +23,7 @@ class test_DatabaseBackend:
     def setup_backend(self):
         self.app.conf.result_serializer = 'json'
         self.app.conf.result_backend = (
-            'django_celery_results.backends:DatabaseBackend')
+            'django_celery_tasks.backends:DatabaseBackend')
         self.b = DatabaseBackend(app=self.app)
 
     def test_backend__pickle_serialization(self):

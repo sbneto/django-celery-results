@@ -16,7 +16,7 @@ except (AttributeError, ImportError):
     def _pyimp():
         return 'Python'
 
-NAME = 'django_celery_results'
+NAME = 'django_celery_tasks'
 
 E_UNSUPPORTED_PYTHON = '%s 1.0 requires %%s %%s or later!' % (NAME,)
 
@@ -71,6 +71,7 @@ def add_default(m):
 def add_doc(m):
     return (('doc', m.groups()[0]),)
 
+
 pats = {re_meta: add_default,
         re_doc: add_doc}
 here = os.path.abspath(os.path.dirname(__file__))
@@ -109,6 +110,7 @@ def _reqs(*f):
 def reqs(*f):
     return [req for subreq in _reqs(*f) for req in subreq]
 
+
 # -*- Long Description -*-
 
 if os.path.exists('README.rst'):
@@ -117,7 +119,6 @@ else:
     long_description = 'See http://pypi.python.org/pypi/%s' % (NAME,)
 
 # -*- %%% -*-
-
 
 class pytest(setuptools.command.test.test):
     user_options = [('pytest-args=', 'a', 'Arguments to pass to py.test')]
@@ -129,6 +130,7 @@ class pytest(setuptools.command.test.test):
     def run_tests(self):
         import pytest
         sys.exit(pytest.main(self.pytest_args))
+
 
 setuptools.setup(
     name=NAME,
@@ -148,8 +150,8 @@ setuptools.setup(
     cmdclass={'test': pytest},
     entry_points={
         'celery.result_backends': [
-            'django-db = django_celery_results.backends:DatabaseBackend',
-            'django-cache = django_celery_results.backends:CacheBackend',
+            'django-db = django_celery_tasks.backends:DatabaseBackend',
+            'django-cache = django_celery_tasks.backends:CacheBackend',
         ],
     },
     zip_safe=False,

@@ -1,5 +1,5 @@
 from celery import shared_task
-from django_celery_results.task import OperationTask
+from django_celery_tasks.task import OperationTask
 
 
 @shared_task(bind=True, base=OperationTask)

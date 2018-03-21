@@ -7,8 +7,8 @@ from datetime import datetime, timedelta
 from celery import states, uuid
 from celery.five import text_t
 
-from django_celery_results.models import TaskResult
-from django_celery_results.utils import now
+from django_celery_tasks.models import TaskResult
+from django_celery_tasks.utils import now
 
 
 @pytest.mark.django_db()
@@ -20,7 +20,7 @@ class test_Models:
         self.app = app
         self.app.conf.result_serializer = 'pickle'
         self.app.conf.result_backend = (
-            'django_celery_results.backends:DatabaseBackend')
+            'django_celery_tasks.backends:DatabaseBackend')
 
     def create_task_result(self):
         id = uuid()
