@@ -15,7 +15,7 @@ About
 
 This extension enables you to store Celery task results using the Django ORM.
 
-It defines a single model (``django_celery_results.models.TaskResult``)
+It defines a single model (``django_celery_tasks.models.TaskResult``)
 used to store task results, and you can query this database table like
 any other Django model.
 
