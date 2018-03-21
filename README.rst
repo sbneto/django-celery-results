@@ -4,7 +4,7 @@
 
 |build-status| |coverage| |license| |wheel| |pyversion| |pyimp|
 
-:Version: 0.0.0
+:Version: 0.0.1
 :Web: http://django-celery-results.readthedocs.io/
 :Download: http://pypi.python.org/pypi/django-celery-results
 :Source: http://github.com/celery/django-celery-results
@@ -53,8 +53,8 @@ http://pypi.python.org/pypi/django-celery-results
 
 You can install it by doing the following,::
 
-    $ tar xvfz django-celery-results-0.0.0.tar.gz
-    $ cd django-celery-results-0.0.0
+    $ tar xvfz django-celery-results-0.0.1.tar.gz
+    $ cd django-celery-results-0.0.1
     $ python setup.py build
     # python setup.py install
 
