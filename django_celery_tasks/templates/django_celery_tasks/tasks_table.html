@@ -1,0 +1,26 @@
+{% load staticfiles %}
+
+<table id="tasks_table">
+    <tr>
+        <th id="task_id">task_id</th>
+        <th id="task">task</th>
+        <th id="status">status</th>
+        <th id="created_at">created_at</th>
+        <th id="args">args</th>
+        <th id="kwargs">kwargs</th>
+    </tr>
+
+    {% for t in tasks %}
+        <tr id="task_row_{{ t.id }}" class="task_row">
+            <td>
+                {% if tasks_details_url %}<a href="{% url tasks_details_url t.task_id %}">{{ t.task_id }}</a>
+                {% else %}{{ t.task_id }}{% endif %}
+            </td>
+            <td>{{ t.task_name }}</td>
+            <td>{{ t.status }}</td>
+            <td>{{ t.created_at }}</td>
+            <td>{{ t.task_args }}</td>
+            <td>{{ t.task_kwargs }}</td>
+        </tr>
+    {% endfor %}
+</table>
