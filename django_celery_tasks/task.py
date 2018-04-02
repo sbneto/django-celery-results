@@ -23,7 +23,7 @@ class OperationTask(Task):
                 task_name=self.name,
                 task_args=args,
                 task_kwargs=kwargs,
-                user=request.user if not request.user.is_anonymous else None,
+                user=request.user if (request and not request.user.is_anonymous) else None,
             ).save()
             return super(OperationTask, self).apply_async(args=args, kwargs=kwargs, task_id=task_id, producer=producer,
                                                           link=link, link_error=link_error, shadow=shadow, **options)
